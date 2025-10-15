@@ -1,0 +1,11 @@
+<h1>Counter Page</h1>
+<hr>
+<h2>counter: {{ counter }}</h2>
+<h2>counterSignal: {{ counterSignal() }}</h2>
+<div class="d-flex gap-2">
+  <button class="btn btn-primary" (click)="operation(5)"> +5 </button>
+  <button class="btn btn-primary" (click)="operation(1)"> +1 </button>
+  <button class="btn btn-primary" (click)="reset()">Reset</button>
+  <button class="btn btn-primary" (click)="operation(-1)"> -1 </button>
+  <button class="btn btn-primary" (click)="operation(-5)"> -5 </button>
+</div>
