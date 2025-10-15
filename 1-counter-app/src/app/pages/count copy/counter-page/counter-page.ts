@@ -1,13 +1,12 @@
 import { Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'app-counter-page-component',
+  selector: 'app-counter-page',
   imports: [],
-  templateUrl: './counter-page-component.html',
-  styleUrl: './counter-page-component.css'
+  templateUrl: './counter-page.html',
+  styleUrl: './counter-page.css'
 })
-export class CounterPageComponent {
-
+export class CounterPage {
   public counter = 10;
   public counterSignal = signal(10);
 
@@ -20,8 +19,4 @@ export class CounterPageComponent {
     this.counter = 0;
     this.counterSignal.set(0);
   }
-
-
-
-
 }
