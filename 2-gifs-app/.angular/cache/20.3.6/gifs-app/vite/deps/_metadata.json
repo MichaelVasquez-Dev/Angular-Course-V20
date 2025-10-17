@@ -1,0 +1,70 @@
+{
+  "hash": "617765e4",
+  "configHash": "bd4b5847",
+  "lockfileHash": "0a7fe815",
+  "browserHash": "96886f35",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "3d177886",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "fb0fda1c",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "40c52268",
+      "needsInterop": false
+    },
+    "zone.js": {
+      "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
+      "file": "zone__js.js",
+      "fileHash": "2f27a55d",
+      "needsInterop": true
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "c8d5c240",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "c1f743d0",
+      "needsInterop": false
+    },
+    "@angular/core/rxjs-interop": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/rxjs-interop.mjs",
+      "file": "@angular_core_rxjs-interop.js",
+      "fileHash": "ad67cdd9",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-5DT2YKHC": {
+      "file": "chunk-5DT2YKHC.js"
+    },
+    "chunk-Q4UWRWH2": {
+      "file": "chunk-Q4UWRWH2.js"
+    },
+    "chunk-ERLETUPC": {
+      "file": "chunk-ERLETUPC.js"
+    },
+    "chunk-3ZPDRQDU": {
+      "file": "chunk-3ZPDRQDU.js"
+    },
+    "chunk-RSS3ODKE": {
+      "file": "chunk-RSS3ODKE.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}
