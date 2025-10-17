@@ -21,6 +21,12 @@ export class SideMenuOptions {
       route: '/dashboard/trending',
     },
     {
+      icon: 'fa-solid fa-chart-line',
+      label: 'Trending2',
+      sublabel: 'Gifs populares',
+      route: '/dashboard/trending2',
+    },
+    {
       icon: 'fa-solid fa-magnifying-glass',
       label: 'Buscador',
       sublabel: 'Buscar gifs',

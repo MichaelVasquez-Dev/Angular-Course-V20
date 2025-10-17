@@ -11,6 +11,10 @@ export const routes: Routes = [
         loadComponent: () => import('./gifs/pages/trending-page/trending-page'),
       },
       {
+        path: 'trending2',
+        loadComponent: () => import('./gifs/pages/trending2-page/trending2-page'),
+      },
+      {
         path: 'search',
         loadComponent: () => import('./gifs/pages/search-page/search-page'),
       },

@@ -18,10 +18,21 @@ export class GifsService {
   private http = inject(HttpClient);
 
   trandingGifs = signal<Gif[]>([]);
-  trandingGifsLoading = signal(true);
+  // trandingGifs2 = signal<>([]);
+  trandingGifsLoading = signal(false);
+  private tranding2Page = signal(0);
+
+  trandingGifGroup = computed(() => {
+    const groups = []
+    for (let i = 0; i < this.trandingGifs().length; i += 3) {
+      groups.push(this.trandingGifs().slice(i, i + 3));
+    }
+    return groups;
+  })
 
   searchHistory = signal<Record<string, Gif[]>>(getLocalStorage());
   searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));
+
 
 
   constructor() {
@@ -33,12 +44,16 @@ export class GifsService {
   });
 
   loadTrendingGifs() {
-    this.http.get<GiphyResponse>(`${environment.giphyApiUrl}/gifs/trending`, { params: { api_key: environment.giphyApiKey, limit: 20 } })
+
+    if(this.trandingGifsLoading()) return;
+    this.trandingGifsLoading.set(true);
+
+    this.http.get<GiphyResponse>(`${environment.giphyApiUrl}/gifs/trending`, { params: { api_key: environment.giphyApiKey, limit: 20, offset: this.tranding2Page() * 20 } })
       .subscribe((response) => {
         const gifs = GifMapper.mapGiphyItemsToGifsArray(response.data);
-        this.trandingGifs.set(gifs);
+        this.trandingGifs.update(prev => [...prev, ...gifs]);
         this.trandingGifsLoading.set(false);
-        console.log(gifs);
+        this.tranding2Page.update(prev => prev + 1);
         // this.trandingGifs.set(GifMapper.mapGiphyItemsToGifsArray(response.data));
       });
   }
