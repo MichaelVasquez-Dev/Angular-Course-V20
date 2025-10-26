@@ -1,3 +1,27 @@
-<search-input (onSearchEvent)="onSearch($event)" placeholder="Buscar por país"></search-input>
+<!-- <search-input (onSearchEvent)="onSearch($event)" placeholder="Buscar por país"></search-input> -->
+<search-input (onSearchEvent)="query.set($event)" placeholder="Buscar por país"></search-input>
 
-<table-dinamic [columns]="columnsForTable" [data]="countries()"></table-dinamic>
+
+<!-- SE QUITA PARA MANEJAR EL ERROR, LOADING, Y EMPTY CON EL TABLE-DINAMIC -->
+
+<!-- @if (countryResource.error()){
+  <div class="alert alert-danger mt-3">
+    {{ countryResource.error()?.message }}
+  </div>
+}
+@if(countryResource.isLoading()){
+  <div class="alert alert-info mt-3">
+    Cargando...
+  </div>
+}
+@if(countryResource.hasValue()){
+  <table-dinamic [columns]="columnsForTable" [data]="countryResource.value()"></table-dinamic>
+} -->
+
+<table-dinamic
+  [columns]="columnsForTable"
+  [data]="countryResourceRx.value() || []"
+  [errorMessage]="countryResourceRx.error()"
+  [isEmpty]="countryResourceRx.value()?.length === 0"
+  [isLoading]="countryResourceRx.isLoading()"
+></table-dinamic>

@@ -8,15 +8,50 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>🇦🇷</td>
-        <td>🇦🇷</td>
-        <td>Argentina</td>
-        <td>Buenos Aires</td>
-        <td>10000000</td>
-        <td>XXXXXXX</td>
-      </tr>
+      @for (country of data(); track country.cca2; let i = $index) {
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ country.flag }}</td>
+          <td><img [src]="country.flagSvg" alt="Bandera de {{ country.name }}" class="w-10"></td>
+          <td>{{ country.name }}</td>
+          <td>{{ country.capital }}</td>
+          <td><span class="badge badge-secondary">{{ country.population | number }}</span></td>
+          <td>
+            <a [routerLink]="['/country/by-country', country.cca2.trim()]" class="link-warning cursor-pointer">Más información</a>
+          </td>
+        </tr>
+      }
+
+      @if(errorMessage()){
+        <tr>
+          <td [attr.colspan]="columns().length" class="text-center">
+            <div class="alert alert-danger">
+              {{ errorMessage() }} daño en la tabla
+            </div>
+          </td>
+        </tr>
+      }
+
+      @if(data().length === 0 && !isLoading()){
+        <tr>
+          <td [attr.colspan]="columns().length" class="text-center">
+            <div class="alert alert-warning">
+              No se encontraron resultados
+            </div>
+          </td>
+        </tr>
+      }
+
+      @if(isLoading()){
+        <tr>
+          <td [attr.colspan]="columns().length" class="text-center">
+            <div class="alert alert-info">
+              Cargando...
+            </div>
+          </td>
+        </tr>
+      }
+
     </tbody>
   </table>
 </section>

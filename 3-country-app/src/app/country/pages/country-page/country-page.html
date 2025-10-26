@@ -1,1 +1,62 @@
-<p>country-page works!</p>
+@if(countryResource.error()){
+  <div class="flex items-center justify-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17q.425 0 .713-.288T13 16t-.288-.712T12 15t-.712.288T11 16t.288.713T12 17m-1-4h2V7h-2zm1 9q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8"/></svg>
+    <h1>No se encontró el país</h1>
+  </div>
+  <div class="flex items-center justify-center">
+    <a (click)="goBack()" class="link-warning">Volver atras</a>
+  </div>
+}
+
+@if(countryResource.isLoading()){
+  <div class="flex items-center justify-center">
+    <div class="alert alert-info">Cargando...</div>
+  </div>
+}
+
+@if(countryResource.hasValue()){
+  <section class="mx-10 my-5">
+    <h3 class="text-3xl font-bold">{{ countryResource.value().name }}</h3>
+    <div class="stats shadow">
+      <div class="stat">
+        <div class="stat-figure text-primary">
+          <!-- TODO: iria un svg icono de personas -->
+        </div>
+        <div class="stat-title">Población</div>
+        <div class="stat-value text-primary">{{ countryResource.value().population | number }}</div>
+        <div class="stat-desc">Personas en el mundo</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-figure text-secondary">
+          <!-- TODO: iria un svg icono de capital -->
+        </div>
+        <div class="stat-title">Capital</div>
+        <div class="stat-value text-secondary">{{ countryResource.value().capital }}</div>
+        <div class="stat-desc">Ciudad capital</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-figure text-secondary">
+          <div class="avatar">
+            <div class="w-16 rounded-full">
+              <img [src]="countryResource.value().flagSvg" alt="Bandera de {{ countryResource.value().name }}" />
+            </div>
+          </div>
+        </div>
+        <div class="stat-value text-secondary">{{ countryResource.value().flag }}</div>
+        <div class="stat-title">Bandera</div>
+        <div class="stat-desc text-secondary">Bandera del país</div>
+      </div>
+    </div>
+  </section>
+  <figure class="diff aspect-16/9" tabindex="0">
+    <div class="diff-item-1" role="img" tabindex="0">
+      <img class="blur brightness-70" alt="daisy" [src]="countryResource.value().flagSvg" />
+    </div>
+    <div class="diff-item-2" role="img">
+      <img alt="daisy" [src]="countryResource.value().flagSvg" />
+    </div>
+    <div class="diff-resizer"></div>
+  </figure>
+}
